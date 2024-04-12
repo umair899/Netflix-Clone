@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:netflix_clone/common/utilies.dart';
 import 'package:netflix_clone/services/api_services.dart';
 
@@ -56,19 +57,18 @@ class _HomeScreenState extends State<HomeScreen> {
           )
         ],
       ),
-      body: Column(
-        children: [
-          FutureBuilder(
-              future: upcomingFuture,
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(child: CircleAvatar());
-                }
-                return MovieCard(upcomingFuture: upcomingFuture , headLineText: 'Upcoming Movies',
-                   
-                );
-              }),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 200,
+              child: MovieCard(
+                future: upcomingFuture,
+                headLineText: 'Upcoming Movies',
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

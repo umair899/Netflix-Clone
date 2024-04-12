@@ -4,31 +4,32 @@ import '../common/utilies.dart';
 import '../services/upcomingMovies_services.dart';
 
 class MovieCard extends StatelessWidget {
-  final Future<UpcomingMovieModel> upcomingFuture;
+  final Future<UpcomingMovieModel> future;
   final String headLineText;
 
   const MovieCard(
-      {super.key, required this.upcomingFuture, required this.headLineText});
+      {super.key, required this.future, required this.headLineText});
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: upcomingFuture,
+        future: future,
         builder: (context, snapshot) {
           var data = snapshot.data?.results;
           return Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  headLineText,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
-                ),
+              Text(
+                headLineText,
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+              ),
+              const SizedBox(
+                height: 20,
               ),
               ListView.builder(
-                itemCount: data!.length,
+                itemCount: data?.length,
                 itemBuilder: (context, index) {
                   return Container(
+                    height: 200,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                     ),
