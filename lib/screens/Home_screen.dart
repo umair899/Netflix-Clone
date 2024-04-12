@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:netflix_clone/common/utilies.dart';
 import 'package:netflix_clone/services/api_services.dart';
-
 import '../services/upcomingMovies_services.dart';
 import '../widgets/moive_card.dart';
 
@@ -17,7 +15,6 @@ class _HomeScreenState extends State<HomeScreen> {
   ApiServices apiServices = ApiServices();
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     upcomingFuture = apiServices.getUpcomingMovies();
   }
@@ -61,7 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           children: [
             SizedBox(
-              height: 200,
+              height: 220,
               child: MovieCard(
                 future: upcomingFuture,
                 headLineText: 'Upcoming Movies',
