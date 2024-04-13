@@ -14,8 +14,10 @@ class MovieCard extends StatelessWidget {
     return FutureBuilder(
         future: future,
         builder: (context, snapshot) {
+          if (snapshot.hasData) {
           var data = snapshot.data?.results;
           return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 headLineText,
@@ -29,17 +31,17 @@ class MovieCard extends StatelessWidget {
               ),
               Expanded(
                 child: ListView.builder(
-                  itemCount: data?.length,
+                  itemCount: data!.length,
                   scrollDirection: Axis.horizontal,
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
                     return Container(
-                      height: 20,
+                      padding: const EdgeInsets.all(5),
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(20),
                       ),
                       child: Image.network(
-                        "${imgurl}$data[index].posterPath",
+                        "$imgurl${data[index].posterPath}",
                       ),
                     );
                   },
@@ -47,6 +49,12 @@ class MovieCard extends StatelessWidget {
               ),
             ],
           );
-        });
+        }
+        else {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        }}
+        );
   }
 }

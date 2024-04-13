@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:netflix_clone/widgets/bottom_nevbar.dart';
-import 'screens/splash_screen.dart';
+import 'package:netflix_clone/screens/Home_screen.dart';
+ 
 
 void main() {
   runApp(const MyApp());
@@ -17,16 +17,16 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.dark,
       
       theme: ThemeData(
-        textTheme: const TextTheme(
-          bodyLarge: TextStyle(color:Colors.white, fontSize: 24.0),
-          bodySmall: TextStyle(color:Colors.white, fontSize: 24.0),
-        ),
+        // textTheme: const TextTheme(
+        //   bodyLarge: TextStyle(color:Colors.white, fontSize: 24.0),
+        //   bodySmall: TextStyle(color:Colors.white, fontSize: 24.0),
+        // ),
         colorScheme: ColorScheme.fromSeed(
             seedColor: Colors.deepPurple, background: Colors.black),
         useMaterial3: true,
         fontFamily: GoogleFonts.ptSans().fontFamily,
       ),
-      home: const BottomNavbar(),
+      home: HomeScreen(),
     );
   }
 }

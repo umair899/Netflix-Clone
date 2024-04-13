@@ -19,4 +19,16 @@ class ApiServices {
     }
     throw Exception("Failed to load data");
   }
+
+  Future<UpcomingMovieModel> getNowPlayingMovies() async {
+    endpoint = "movie/upcoming";
+    final url = "$baseurl$endpoint$key";
+    final response = await http.get(Uri.parse(url));
+    if (response.statusCode == 200) {
+      log("Data loaded successfully");
+      return UpcomingMovieModel.fromJson(jsonDecode(response.body));
+    }
+    throw Exception("Failed to load data");
+  }
+
 }
